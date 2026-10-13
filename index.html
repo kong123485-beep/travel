@@ -1,7 +1,61 @@
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>旅遊指南</title>
+    <style>
+        /* 1. 全域設定與畫面居中 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6; /* 網頁淡淡的背景色 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;     /* 水平居中 */
+            justify-content: center;  /* 垂直居中 */
+            min-height: 100vh;        /* 讓內容撐滿整個螢幕高度 */
+            margin: 0;
+        }
+
+        /* 2. 標題樣式 */
+        h1 {
+            color: #2c3e50;           /* 深藍灰色標題 */
+            font-size: 2.5rem;        /* 放大標題 */
+            margin-bottom: 30px;
+        }
+
+        /* 3. 選單區塊（ul）樣式 */
+        ul {
+            list-style: none;         /* 移除原本的黑點 */
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            max-width: 400px;         /* 限制選單最大寬度 */
+        }
+
+        /* 4. 每個選單項目（li）做成漂亮的按鈕卡片 */
+        li {
+            margin: 15px 0;           /* 項目之間的間距 */
+        }
+
+        /* 5. 連結（a）的顏色與放大設定 */
+        ul li a {
+            display: block;           /* 讓整條按鈕都可以點擊 */
+            text-align: center;       /* 文字置中 */
+            padding: 15px 20px;       /* 按鈕內襯上下左右的寬度 */
+            font-size: 1.3rem;        /* 放大文字 */
+            font-weight: bold;        /* 文字加粗 */
+            color: white;             /* 文字顏色設為白色 */
+            background-color: #3498db;/* 按鈕背景顏色（好看的藍色） */
+            text-decoration: none;    /* 移除超連結底線 */
+            border-radius: 8px;       /* 按鈕圓角 */
+            transition: background 0.3s; /* 滑鼠滑過時的平滑變色效果 */
+        }
+
+        /* 6. 滑鼠移上去（Hover）時變色 */
+        ul li a:hover {
+            background-color: #2980b9;/* 滑鼠移上去變成深藍色 */
+        }
+    </style>
 </head>
 <body>
 
