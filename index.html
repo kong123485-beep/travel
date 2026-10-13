@@ -1,72 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>旅遊指南</title>
     <style>
-        /* 1. 全域設定與畫面居中 */
+        /* 1. 頁面整體背景：改用柔和的微漸層 */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7f6; /* 網頁淡淡的背景色 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
             display: flex;
             flex-direction: column;
-            align-items: center;     /* 水平居中 */
-            justify-content: center;  /* 垂直居中 */
-            min-height: 100vh;        /* 讓內容撐滿整個螢幕高度 */
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        /* 2. 標題樣式 */
+        /* 2. 質感大卡片：把所有內容包起來，做成毛玻璃/陰影質感 */
+        .menu-container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* 3. 標題設計：縮小字距、加深顏色 */
         h1 {
-            color: #2c3e50;           /* 深藍灰色標題 */
-            font-size: 2.5rem;        /* 放大標題 */
-            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
-        /* 3. 選單區塊（ul）樣式 */
+        /* 副標題說明 */
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 35px;
+        }
+
+        /* 4. 選單清單 */
         ul {
-            list-style: none;         /* 移除原本的黑點 */
+            list-style: none;
             padding: 0;
             margin: 0;
-            width: 100%;
-            max-width: 400px;         /* 限制選單最大寬度 */
         }
 
-        /* 4. 每個選單項目（li）做成漂亮的按鈕卡片 */
         li {
-            margin: 15px 0;           /* 項目之間的間距 */
+            margin-bottom: 18px;
         }
 
-        /* 5. 連結（a）的顏色與放大設定 */
+        li:last-child {
+            margin-bottom: 0; /* 最後一個項目不要留底邊距 */
+        }
+
+        /* 5. 按鈕核心設計：加入漸層色、圓角、立體陰影與微動效 */
         ul li a {
-            display: block;           /* 讓整條按鈕都可以點擊 */
-            text-align: center;       /* 文字置中 */
-            padding: 15px 20px;       /* 按鈕內襯上下左右的寬度 */
-            font-size: 1.3rem;        /* 放大文字 */
-            font-weight: bold;        /* 文字加粗 */
-            color: white;             /* 文字顏色設為白色 */
-            background-color: #3498db;/* 按鈕背景顏色（好看的藍色） */
-            text-decoration: none;    /* 移除超連結底線 */
-            border-radius: 8px;       /* 按鈕圓角 */
-            transition: background 0.3s; /* 滑鼠滑過時的平滑變色效果 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 20px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); /* 質感的科技蔚藍漸層 */
+            text-decoration: none;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 讓動畫更流暢 */
         }
 
-        /* 6. 滑鼠移上去（Hover）時變色 */
+        /* 為不同按鈕配上專屬的漸層顏色（更精緻） */
+        li.btn-traffic a { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); box-shadow: 0 4px 15px rgba(255, 154, 158, 0.3); } /* 櫻花粉 */
+        li.btn-hotel a   { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); box-shadow: 0 4px 15px rgba(253, 160, 133, 0.3); } /* 溫暖橘 */
+        li.btn-lang a    { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); box-shadow: 0 4px 15px rgba(132, 250, 176, 0.3); } /* 薄荷綠 */
+        li.btn-food a    { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); box-shadow: 0 4px 15px rgba(161, 196, 253, 0.3); } /* 湖水藍 */
+
+        /* 按鈕文字內的 Emoji 錨點間距 */
+        ul li a span {
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* 6. Hover 效果：滑鼠移上去時放大 + 陰影加深 */
         ul li a:hover {
-            background-color: #2980b9;/* 滑鼠移上去變成深藍色 */
+            transform: translateY(-3px) scale(1.02); /* 微微往上飄且放大 */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* 陰影變大，產生懸浮感 */
+            filter: brightness(1.05); /* 亮度稍微提升 */
+        }
+
+        /* 點擊時的下壓視覺回饋 */
+        ul li a:active {
+            transform: translateY(-1px) scale(1.0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
 
-    <h1>旅遊指南選單</h1>
-    
-    <ul>
-        <li><a href="https://kong123485-beep.github.io/travel/交通.html">交通</a></li>
-        <li><a href="https://kong123485-beep.github.io/travel/住宿.html">住宿</a></li>
-        <li><a href="https://kong123485-beep.github.io/travel/日常用語.html">日常用語</a></li>
-        <li><a href="https://kong123485-beep.github.io/travel/餐廳.html">餐廳</a></li>
-    </ul>
+    <!-- 用一個卡片外框包起來 -->
+    <div class="menu-container">
+        <h1>旅遊指南選單</h1>
+        <div class="subtitle">實用中英日韓對照工具</div>
+        
+        <ul>
+            <li class="btn-traffic"><a href="https://github.io"><span>✈️</span>外出交通</a></li>
+            <li class="btn-hotel"><a href="https://github.io"><span>🏨</span>飯店住宿</a></li>
+            <li class="btn-lang"><a href="https://github.io"><span>🗣️</span>日常用語</a></li>
+            <li class="btn-food"><a href="https://github.io"><span>🍴</span>餐廳用餐</a></li>
+        </ul>
+    </div>
 
 </body>
 </html>
