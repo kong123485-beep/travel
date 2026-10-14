@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日常用語 中英日韓對照表</title>
+    <title>日常用語 中英日韓對照表 (含語音朗讀與音效)</title>
     <style>
         * {
             box-sizing: border-box;
@@ -67,6 +67,26 @@
         .en-col { color: #27ae60; width: 22%; }
         .ja-col { color: #e67e22; width: 30%; }
         .ko-col { color: #8e44ad; width: 30%; }
+
+        /* 可發音單元格樣式 */
+        .speakable {
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s ease;
+            border-radius: 6px;
+        }
+        .speakable:hover {
+            background-color: #e2e8f0;
+        }
+        .speakable::after {
+            content: " 🔊";
+            font-size: 0.8rem;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+        .speakable:hover::after {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -86,93 +106,140 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="zh-col">你好</td>
-                    <td class="en-col">Hello / Hi</td>
-                    <td class="ja-col">こんにちは<span class="pinyin">Konnichiwa</span></td>
-                    <td class="ko-col">안녕하세요<span class="pinyin">An-nyeong-ha-se-yo</span></td>
+                    <td class="zh-col speakable" onclick="speak('你好', 'zh-TW')">你好</td>
+                    <td class="en-col speakable" onclick="speak('Hello', 'en-US')">Hello / Hi</td>
+                    <td class="ja-col speakable" onclick="speak('こんにちは', 'ja-JP')">こんにちは<span class="pinyin">Konnichiwa</span></td>
+                    <td class="ko-col speakable" onclick="speak('안녕하세요', 'ko-KR')">안녕하세요<span class="pinyin">An-nyeong-ha-se-yo</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">早安</td>
-                    <td class="en-col">Good morning</td>
-                    <td class="ja-col">おはようございます<span class="pinyin">Ohayou gozaimasu</span></td>
-                    <td class="ko-col">좋은 아침이에요<span class="pinyin">Jo-eun a-chim-i-e-yo</span></td>
+                    <td class="zh-col speakable" onclick="speak('早安', 'zh-TW')">早安</td>
+                    <td class="en-col speakable" onclick="speak('Good morning', 'en-US')">Good morning</td>
+                    <td class="ja-col speakable" onclick="speak('おはようございます', 'ja-JP')">おはようございます<span class="pinyin">Ohayou gozaimasu</span></td>
+                    <td class="ko-col speakable" onclick="speak('좋은 아침이에요', 'ko-KR')">좋은 아침이에요<span class="pinyin">Jo-eun a-chim-i-e-yo</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">晚安</td>
-                    <td class="en-col">Good night</td>
-                    <td class="ja-col">おやすみなさい<span class="pinyin">Oyasuminasai</span></td>
-                    <td class="ko-col">안녕히 주무세요<span class="pinyin">An-nyeong-hi ju-mu-se-yo</span></td>
+                    <td class="zh-col speakable" onclick="speak('晚安', 'zh-TW')">晚安</td>
+                    <td class="en-col speakable" onclick="speak('Good night', 'en-US')">Good night</td>
+                    <td class="ja-col speakable" onclick="speak('おやすみなさい', 'ja-JP')">おやすみなさい<span class="pinyin">Oyasuminasai</span></td>
+                    <td class="ko-col speakable" onclick="speak('안녕히 주무세요', 'ko-KR')">안녕히 주무세요<span class="pinyin">An-nyeong-hi ju-mu-se-yo</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">謝謝</td>
-                    <td class="en-col">Thank you</td>
-                    <td class="ja-col">ありがとうございます<span class="pinyin">Arigatou gozaimasu</span></td>
-                    <td class="ko-col">감사합니다<span class="pinyin">Gam-sa-ham-ni-da</span></td>
+                    <td class="zh-col speakable" onclick="speak('謝謝', 'zh-TW')">謝謝</td>
+                    <td class="en-col speakable" onclick="speak('Thank you', 'en-US')">Thank you</td>
+                    <td class="ja-col speakable" onclick="speak('ありがとうございます', 'ja-JP')">ありがとうございます<span class="pinyin">Arigatou gozaimasu</span></td>
+                    <td class="ko-col speakable" onclick="speak('감사합니다', 'ko-KR')">감사합니다<span class="pinyin">Gam-sa-ham-ni-da</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">不客氣</td>
-                    <td class="en-col">You're welcome</td>
-                    <td class="ja-col">どういたしまして<span class="pinyin">Dou itashimashite</span></td>
-                    <td class="ko-col">천만에요<span class="pinyin">Cheon-man-e-yo</span></td>
+                    <td class="zh-col speakable" onclick="speak('不客氣', 'zh-TW')">不客氣</td>
+                    <td class="en-col speakable" onclick="speak('You\'re welcome', 'en-US')">You're welcome</td>
+                    <td class="ja-col speakable" onclick="speak('どういたしまして', 'ja-JP')">どういたしまして<span class="pinyin">Dou itashimashite</span></td>
+                    <td class="ko-col speakable" onclick="speak('천만에요', 'ko-KR')">천만에요<span class="pinyin">Cheon-man-e-yo</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">對不起 / 抱歉</td>
-                    <td class="en-col">Sorry / Excuse me</td>
-                    <td class="ja-col">すみません<span class="pinyin">Sumimasen</span></td>
-                    <td class="ko-col">죄송합니다<span class="pinyin">Joe-song-ham-ni-da</span></td>
+                    <td class="zh-col speakable" onclick="speak('對不起', 'zh-TW')">對不起 / 抱歉</td>
+                    <td class="en-col speakable" onclick="speak('Sorry', 'en-US')">Sorry / Excuse me</td>
+                    <td class="ja-col speakable" onclick="speak('すみません', 'ja-JP')">すみません<span class="pinyin">Sumimasen</span></td>
+                    <td class="ko-col speakable" onclick="speak('죄송합니다', 'ko-KR')">죄송합니다<span class="pinyin">Joe-song-ham-ni-da</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">是的 / 好的</td>
-                    <td class="en-col">Yes / Okay</td>
-                    <td class="ja-col">はい<span class="pinyin">Hai</span></td>
-                    <td class="ko-col">네<span class="pinyin">Ne</span></td>
+                    <td class="zh-col speakable" onclick="speak('是的', 'zh-TW')">是的 / 好的</td>
+                    <td class="en-col speakable" onclick="speak('Yes', 'en-US')">Yes / Okay</td>
+                    <td class="ja-col speakable" onclick="speak('はい', 'ja-JP')">はい<span class="pinyin">Hai</span></td>
+                    <td class="ko-col speakable" onclick="speak('네', 'ko-KR')">네<span class="pinyin">Ne</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">不是 / 不行</td>
-                    <td class="en-col">No</td>
-                    <td class="ja-col">いいえ<span class="pinyin">Iie</span></td>
-                    <td class="ko-col">아니요<span class="pinyin">A-ni-yo</span></td>
+                    <td class="zh-col speakable" onclick="speak('不是', 'zh-TW')">不是 / 不行</td>
+                    <td class="en-col speakable" onclick="speak('No', 'en-US')">No</td>
+                    <td class="ja-col speakable" onclick="speak('いいえ', 'ja-JP')">いいえ<span class="pinyin">Iie</span></td>
+                    <td class="ko-col speakable" onclick="speak('아니요', 'ko-KR')">아니요<span class="pinyin">A-ni-yo</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">再見</td>
-                    <td class="en-col">Goodbye</td>
-                    <td class="ja-col">さようなら<span class="pinyin">Sayounara</span></td>
-                    <td class="ko-col">안녕히 계세요<span class="pinyin">An-nyeong-hi gye-se-yo</span></td>
+                    <td class="zh-col speakable" onclick="speak('再見', 'zh-TW')">再見</td>
+                    <td class="en-col speakable" onclick="speak('Goodbye', 'en-US')">Goodbye</td>
+                    <td class="ja-col speakable" onclick="speak('さようなら', 'ja-JP')">さようなら<span class="pinyin">Sayounara</span></td>
+                    <td class="ko-col speakable" onclick="speak('안녕히 계세요', 'ko-KR')">안녕히 계세요<span class="pinyin">An-nyeong-hi gye-se-yo</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">請問多少錢？</td>
-                    <td class="en-col">How much is it?</td>
-                    <td class="ja-col">いくらですか？<span class="pinyin">Ikura desu ka?</span></td>
-                    <td class="ko-col">얼마예요?<span class="pinyin">Eol-ma-ye-yo?</span></td>
+                    <td class="zh-col speakable" onclick="speak('請問多少錢？', 'zh-TW')">請問多少錢？</td>
+                    <td class="en-col speakable" onclick="speak('How much is it?', 'en-US')">How much is it?</td>
+                    <td class="ja-col speakable" onclick="speak('いくらですか？', 'ja-JP')">いくらですか？<span class="pinyin">Ikura desu ka?</span></td>
+                    <td class="ko-col speakable" onclick="speak('얼마예요?', 'ko-KR')">얼마예요?<span class="pinyin">Eol-ma-ye-yo?</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">洗手間在哪裡？</td>
-                    <td class="en-col">Where is the bathroom?</td>
-                    <td class="ja-col">トイレはどこですか？<span class="pinyin">Toire wa doko desu ka?</span></td>
-                    <td class="ko-col">화장실이 어디예요?<span class="pinyin">Hwa-jang-sil-i eo-di-ye-yo?</span></td>
+                    <td class="zh-col speakable" onclick="speak('洗手間在哪裡？', 'zh-TW')">洗手間在哪裡？</td>
+                    <td class="en-col speakable" onclick="speak('Where is the bathroom?', 'en-US')">Where is the bathroom?</td>
+                    <td class="ja-col speakable" onclick="speak('トイレはどこですか？', 'ja-JP')">トイレはどこですか？<span class="pinyin">Toire wa doko desu ka?</span></td>
+                    <td class="ko-col speakable" onclick="speak('화장실이 어디예요?', 'ko-KR')">화장실이 어디예요?<span class="pinyin">Hwa-jang-sil-i eo-di-ye-yo?</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">救命！/ 請幫忙！</td>
-                    <td class="en-col">Help me!</td>
-                    <td class="ja-col">助けてください！<span class="pinyin">Tasukete kudasai!</span></td>
-                    <td class="ko-col">도와주세요!<span class="pinyin">Do-wa-ju-se-yo!</span></td>
+                    <td class="zh-col speakable" onclick="speak('救命！', 'zh-TW')">救命！/ 請幫忙！</td>
+                    <td class="en-col speakable" onclick="speak('Help me!', 'en-US')">Help me!</td>
+                    <td class="ja-col speakable" onclick="speak('助けてください！', 'ja-JP')">助けてください！<span class="pinyin">Tasukete kudasai!</span></td>
+                    <td class="ko-col speakable" onclick="speak('도와주세요!', 'ko-KR')">도와주세요!<span class="pinyin">Do-wa-ju-se-yo!</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">美味 / 好吃</td>
-                    <td class="en-col">Delicious</td>
-                    <td class="ja-col">おいしいです<span class="pinyin">Oishii desu</span></td>
-                    <td class="ko-col">맛있어요<span class="pinyin">Mas-is-seo-yo</span></td>
+                    <td class="zh-col speakable" onclick="speak('美味', 'zh-TW')">美味 / 好吃</td>
+                    <td class="en-col speakable" onclick="speak('Delicious', 'en-US')">Delicious</td>
+                    <td class="ja-col speakable" onclick="speak('おいしいです', 'ja-JP')">おいしいです<span class="pinyin">Oishii desu</span></td>
+                    <td class="ko-col speakable" onclick="speak('맛있어요', 'ko-KR')">맛있어요<span class="pinyin">Mas-is-seo-yo</span></td>
                 </tr>
                 <tr>
-                    <td class="zh-col">買單 / 結帳</td>
-                    <td class="en-col">Check, please</td>
-                    <td class="ja-col">お会計をお願いします<span class="pinyin">O-kaikei wo onegaishimasu</span></td>
-                    <td class="ko-col">계산해 주세요<span class="pinyin">Gye-san-hae ju-se-yo</span></td>
+                    <td class="zh-col speakable" onclick="speak('買單', 'zh-TW')">買單 / 結帳</td>
+                    <td class="en-col speakable" onclick="speak('Check, please', 'en-US')">Check, please</td>
+                    <td class="ja-col speakable" onclick="speak('お会計をお願いします', 'ja-JP')">お会計をお願いします<span class="pinyin">O-kaikei wo onegaishimasu</span></td>
+                    <td class="ko-col speakable" onclick="speak('계산해 주세요', 'ko-KR')">계산해 주세요<span class="pinyin">Gye-san-hae ju-se-yo</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
+
+<script>
+    // 播放點擊提示音效 (Web Audio API)
+    function playClickSound() {
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            const ctx = new AudioContext();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.05);
+
+            gain.gain.setValueAtTime(0.15, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start();
+            osc.stop(ctx.currentTime + 0.05);
+        } catch (e) {
+            console.log("Audio not supported", e);
+        }
+    }
+
+    // 播放真人/系統發音 (Web Speech API)
+    function speak(text, lang) {
+        // 先播放點擊音效
+        playClickSound();
+
+        // 停止之前的發音
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.rate = 0.9; // 語速稍微放慢一點，方便學習 listening
+            
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("您的瀏覽器不支援語音播放功能。");
+        }
+    }
+</script>
 
 </body>
 </html>
