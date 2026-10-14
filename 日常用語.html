@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日常用語 中英日韓對照表 (含語音朗讀與音效)</title>
+    <title>日常用語 中英日韓對照表 (含語音與固定中文欄)</title>
     <style>
         * {
             box-sizing: border-box;
@@ -33,6 +33,7 @@
         }
         .table-wrapper {
             overflow-x: auto;
+            position: relative;
         }
         table {
             width: 100%;
@@ -57,6 +58,28 @@
         tr:hover {
             background-color: #f1f5f9;
         }
+        
+        /* 固定第一欄（中文）的樣式 */
+        th:first-child, td.zh-col {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            background-color: #ffffff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+        }
+        /* 針對斑馬紋與滑鼠懸停時的背景色修正，避免固定欄底色跑掉 */
+        tr:nth-child(even) td.zh-col {
+            background-color: #f8fafc;
+        }
+        tr:hover td.zh-col {
+            background-color: #f1f5f9;
+        }
+        /* 表頭第一格（中文表頭）背景色維持表頭色 */
+        th:first-child {
+            background-color: #3498db !important;
+            z-index: 3;
+        }
+
         .pinyin {
             display: block;
             font-size: 0.85rem;
@@ -68,7 +91,6 @@
         .ja-col { color: #e67e22; width: 30%; }
         .ko-col { color: #8e44ad; width: 30%; }
 
-        /* 可發音單元格樣式 */
         .speakable {
             cursor: pointer;
             position: relative;
@@ -195,7 +217,6 @@
 </div>
 
 <script>
-    // 播放點擊提示音效 (Web Audio API)
     function playClickSound() {
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -203,37 +224,25 @@
             const ctx = new AudioContext();
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
-
             osc.type = 'sine';
             osc.frequency.setValueAtTime(800, ctx.currentTime);
             osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.05);
-
             gain.gain.setValueAtTime(0.15, ctx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
-
             osc.connect(gain);
             gain.connect(ctx.destination);
-
             osc.start();
             osc.stop(ctx.currentTime + 0.05);
-        } catch (e) {
-            console.log("Audio not supported", e);
-        }
+        } catch (e) {}
     }
 
-    // 播放真人/系統發音 (Web Speech API)
     function speak(text, lang) {
-        // 先播放點擊音效
         playClickSound();
-
-        // 停止之前的發音
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel();
-
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = lang;
-            utterance.rate = 0.9; // 語速稍微放慢一點，方便學習 listening
-            
+            utterance.rate = 0.9;
             window.speechSynthesis.speak(utterance);
         } else {
             alert("您的瀏覽器不支援語音播放功能。");
