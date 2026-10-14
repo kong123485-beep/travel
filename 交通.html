@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>外出交通實用用語 中英日韓對照表 (含語音)</title>
+    <title>外出交通實用用語 中英日韓對照表 (含語音與固定中文欄)</title>
     <style>
         * {
             box-sizing: border-box;
@@ -33,6 +33,7 @@
         }
         .table-wrapper {
             overflow-x: auto;
+            position: relative;
         }
         table {
             width: 100%;
@@ -57,6 +58,26 @@
         tr:hover {
             background-color: #f1f5f9;
         }
+        
+        /* 固定第一欄（中文） */
+        th:first-child, td.zh-col {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            background-color: #ffffff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+        }
+        tr:nth-child(even) td.zh-col {
+            background-color: #f8fafc;
+        }
+        tr:hover td.zh-col {
+            background-color: #f1f5f9;
+        }
+        th:first-child {
+            background-color: #27ae60 !important;
+            z-index: 3;
+        }
+
         .pinyin {
             display: block;
             font-size: 0.85rem;
